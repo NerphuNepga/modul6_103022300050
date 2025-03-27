@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace modul6_103022300050
 
         public SayaTubeVideo(string title)
         {
+            Debug.Assert(title != null && title.Length <= 200 && title.Length > 0);
+            
             this.title = title;
             this.id = new Random().Next(10000,99999);
             this.playCount = 0;
@@ -23,7 +26,18 @@ namespace modul6_103022300050
 
         public void IncreasePlayCount(int playCount)
         {
-            this.playCount += playCount;
+            Debug.Assert(playCount <= 25000000 && playCount >= 0);
+            try
+            {
+                checked
+                {
+                    this.playCount += playCount;
+                }
+            }
+            catch (OverflowException ex)
+            {
+                Console.WriteLine("ERROR: " + ex.ToString());
+            }
         }
 
         public void PrintVideoDetails()

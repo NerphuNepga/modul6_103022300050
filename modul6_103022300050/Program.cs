@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using modul6_103022300050;
+using System.Text;
 
 public class Program
 {
@@ -28,6 +29,19 @@ public class Program
         user.AddVideo(video8);
         user.AddVideo(video9);
         user.AddVideo(video10);
+
+        SayaTubeVideo tesVideo2 = new SayaTubeVideo(new string('A', 201));
+        SayaTubeVideo tesVideo = new SayaTubeVideo(null);
+        video1.IncreasePlayCount(25000001);
+        video1.IncreasePlayCount(-1);
+        SayaTubeUser tesUser = new SayaTubeUser(new string('A', 101));
+        SayaTubeUser tesUser2 = new SayaTubeUser(null);
+        user.AddVideo(null);
+        SayaTubeVideo tesVideo3 = new SayaTubeVideo("Tes Video");
+        for (int i = 0; i < 100; i++)
+        {
+            tesVideo3.IncreasePlayCount(25000000);
+        }
 
         user.PrintAllVideoPlaycount();
     }
